@@ -17,4 +17,8 @@
     <string name="delete_utilization_title">Smazání utilizace</string>
     <string name="permission_contacts_title">Přístup ke kontaktům</string>
     <string name="permission_contacts_message">Z důvodu ...</string>
+    <string name="utilization_notification_title">Nevykázaná utilizace</string>
+    <string name="utilization_notification_message">Dnes zbývá vykázat %1$d h</string>
+    <string name="notification_channel_name">Utilizace</string>
+    <string name="notification_channel_desc">Notifikace s informací o nevykázaných hodinách</string>
 </resources>
