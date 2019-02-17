@@ -9,4 +9,10 @@
     <string name="utilization_create_title">Nová činnost</string>
     <string name="choose_date">Vybrat datum</string>
     <string name="saved">Uloženo</string>
+    <string name="delete">Smazat</string>
+    <string name="deleted">Smazáno</string>
+    <string name="yes">Ano</string>
+    <string name="no">Ne</string>
+    <string name="delete_utilization_message">Opravdu chcete smazat utilizaci?</string>
+    <string name="delete_utilization_title">Smazání utilizace</string>
 </resources>
