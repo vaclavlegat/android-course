@@ -51,7 +51,7 @@ public class UtilizationListActivity extends AppCompatActivity {
     }
 
     private void openDetail(UtilizationItem item) {
-        UtilizationDetailActivity.start(this, item);
+        UtilizationDetailActivity.start(this, item.getId());
     }
 
     private void openCreate() {
