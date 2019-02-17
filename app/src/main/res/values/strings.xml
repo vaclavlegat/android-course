@@ -6,4 +6,6 @@
     <string name="date_title">Datum</string>
     <string name="note_title">Poznámka</string>
     <string name="utilization_detail_title">Detail utilizace</string>
+    <string name="utilization_create_title">Nová činnost</string>
+    <string name="choose_date">Vybrat datum</string>
 </resources>

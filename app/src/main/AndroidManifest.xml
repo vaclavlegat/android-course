@@ -23,6 +23,10 @@
             android:name=".ui.UtilizationDetailActivity"
             android:parentActivityName=".ui.UtilizationListActivity" />
 
+        <activity
+            android:name=".ui.UtilizationCreateActivity"
+            android:parentActivityName=".ui.UtilizationListActivity" />
+
     </application>
 
 </manifest>

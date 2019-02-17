@@ -7,7 +7,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import eu.profinit.profis.R;
 import eu.profinit.profis.model.UtilizationItem;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -45,10 +49,25 @@ public class UtilizationListActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
         utilizationItems.setAdapter(adapter);
 
+        FloatingActionButton fab = findViewById(R.id.fab);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openCreate();
+            }
+        });
+
     }
 
     private void openDetail(UtilizationItem item) {
         UtilizationDetailActivity.start(this, item);
     }
+
+    private void openCreate() {
+        Intent intent = new Intent(this, UtilizationCreateActivity.class);
+        startActivity(intent);
+    }
+
 
 }

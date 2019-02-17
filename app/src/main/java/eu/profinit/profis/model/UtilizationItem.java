@@ -41,4 +41,15 @@ public class UtilizationItem {
         this.note = note;
     }
 
+    @Override
+    public String toString() {
+        return "UtilizationItem{" +
+                "date=" + date +
+                ", contract='" + contract + '\'' +
+                ", hours=" + hours +
+                ", note='" + note + '\'' +
+                '}';
+    }
+
+
 }
