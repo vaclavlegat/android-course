@@ -1,6 +1,7 @@
 package eu.profinit.profis.ui;
 
 import android.app.DatePickerDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +20,7 @@ import java.util.Locale;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import eu.profinit.profis.R;
+import eu.profinit.profis.db.ProfisDatabase;
 import eu.profinit.profis.model.UtilizationItem;
 
 public class UtilizationCreateActivity extends AppCompatActivity {
@@ -87,8 +89,31 @@ public class UtilizationCreateActivity extends AppCompatActivity {
         item.setNote(note.getText().toString());
         item.setContract(contract.getText().toString());
         item.setHours(Integer.valueOf(hours.getText().toString()));
-
-        Toast.makeText(this, item.toString(), Toast.LENGTH_SHORT).show();
-
+        new InsertUtilization().execute(item);
     }
+
+    private void insertItem(UtilizationItem item) {
+        ProfisDatabase.getInstance(this).profisDao().insert(item);
+    }
+
+    private void showSuccess() {
+        Toast.makeText(this, R.string.saved, Toast.LENGTH_SHORT).show();
+    }
+
+    private class InsertUtilization extends AsyncTask<UtilizationItem, Void, Void> {
+
+        @Override
+        protected Void doInBackground(UtilizationItem... items) {
+            insertItem(items[0]);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            showSuccess();
+            finish();
+        }
+    }
+
 }
