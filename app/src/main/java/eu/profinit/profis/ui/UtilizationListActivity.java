@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import eu.profinit.profis.R;
 import eu.profinit.profis.model.UtilizationItem;
-import eu.profinit.profis.ui.UtilizationItemsAdapter;
 
 import android.os.Bundle;
 
@@ -19,7 +18,7 @@ public class UtilizationListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_utilization_list);
 
         RecyclerView utilizationItems = findViewById(R.id.utilization_items);
         utilizationItems.setLayoutManager(new LinearLayoutManager(this));
