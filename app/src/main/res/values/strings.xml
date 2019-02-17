@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">profis</string>
     <string name="hours">%1$d h</string>
+    <string name="contract_title">Zakázka</string>
+    <string name="hours_title">Počet hodin</string>
+    <string name="date_title">Datum</string>
+    <string name="note_title">Poznámka</string>
+    <string name="utilization_detail_title">Detail utilizace</string>
 </resources>

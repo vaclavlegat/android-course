@@ -39,11 +39,16 @@ public class UtilizationListActivity extends AppCompatActivity {
         UtilizationItemsAdapter adapter = new UtilizationItemsAdapter(items, new UtilizationItemsAdapter.ItemClickListener() {
             @Override
             public void onItemClicked(UtilizationItem item) {
-
+                openDetail(item);
             }
         });
         adapter.notifyDataSetChanged();
         utilizationItems.setAdapter(adapter);
 
     }
+
+    private void openDetail(UtilizationItem item) {
+        UtilizationDetailActivity.start(this, item);
+    }
+
 }
