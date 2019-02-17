@@ -1,5 +1,15 @@
 package eu.profinit.profis.ui;
 
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.view.View;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.List;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,21 +17,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import eu.profinit.profis.R;
 import eu.profinit.profis.db.ProfisDatabase;
 import eu.profinit.profis.model.UtilizationItem;
+import eu.profinit.profis.sync.SyncReceiver;
+import eu.profinit.profis.sync.SyncService;
 
-import android.content.Intent;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.view.View;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import static eu.profinit.profis.sync.SyncService.SYNC_ACTION;
 
 public class UtilizationListActivity extends AppCompatActivity {
 
     private RecyclerView utilizationItems;
+
+    private SyncReceiver receiver = new SyncReceiver();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +47,25 @@ public class UtilizationListActivity extends AppCompatActivity {
             }
         });
 
+        Intent syncService = new Intent(this, SyncService.class);
+        startService(syncService);
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         new LoadUtilization().execute();
+
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(SYNC_ACTION);
+        registerReceiver(receiver, filter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(receiver);
     }
 
     private void openDetail(UtilizationItem item) {

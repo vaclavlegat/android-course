@@ -27,6 +27,8 @@
             android:name=".ui.UtilizationCreateActivity"
             android:parentActivityName=".ui.UtilizationListActivity" />
 
+        <service android:name=".sync.SyncService" />
+
     </application>
 
 </manifest>
