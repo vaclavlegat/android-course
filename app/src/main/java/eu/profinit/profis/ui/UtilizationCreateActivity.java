@@ -93,7 +93,7 @@ public class UtilizationCreateActivity extends AppCompatActivity {
     }
 
     private void insertItem(UtilizationItem item) {
-        ProfisDatabase.getInstance(this).profisDao().insert(item);
+        ProfisDatabase.getInstance(this).utilizationDao().insert(item);
     }
 
     private void showSuccess() {

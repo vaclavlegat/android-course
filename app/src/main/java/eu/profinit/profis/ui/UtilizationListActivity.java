@@ -60,7 +60,7 @@ public class UtilizationListActivity extends AppCompatActivity {
     }
 
     private List<UtilizationItem> loadItems() {
-        return ProfisDatabase.getInstance(this).profisDao().getAll();
+        return ProfisDatabase.getInstance(this).utilizationDao().getAll();
     }
 
     private class LoadUtilization extends AsyncTask<Void, Void, List<UtilizationItem>> {

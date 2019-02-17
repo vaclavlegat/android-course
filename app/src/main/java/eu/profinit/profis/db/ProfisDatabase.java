@@ -11,7 +11,7 @@ import eu.profinit.profis.model.UtilizationItem;
 @Database(entities = {UtilizationItem.class}, version = 1)
 @TypeConverters({DateTypeConverter.class})
 public abstract class ProfisDatabase extends RoomDatabase {
-    public abstract UtilizationDao profisDao();
+    public abstract UtilizationDao utilizationDao();
 
     private static ProfisDatabase db;
 
