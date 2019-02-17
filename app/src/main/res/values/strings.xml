@@ -15,4 +15,6 @@
     <string name="no">Ne</string>
     <string name="delete_utilization_message">Opravdu chcete smazat utilizaci?</string>
     <string name="delete_utilization_title">Smazání utilizace</string>
+    <string name="permission_contacts_title">Přístup ke kontaktům</string>
+    <string name="permission_contacts_message">Z důvodu ...</string>
 </resources>
