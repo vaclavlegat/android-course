@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">profis</string>
+    <string name="hours">%1$d h</string>
 </resources>
