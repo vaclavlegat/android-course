@@ -14,6 +14,7 @@ import androidx.core.app.NotificationManagerCompat;
 import eu.profinit.profis.R;
 import eu.profinit.profis.db.ProfisDatabase;
 import eu.profinit.profis.model.UtilizationItem;
+import eu.profinit.profis.ui.UtilizationCreateActivity;
 import eu.profinit.profis.ui.UtilizationListActivity;
 
 import static eu.profinit.profis.ui.UtilizationListActivity.CHANNEL_ID;
@@ -61,7 +62,7 @@ public class SyncService extends IntentService {
 
     private void createNotification(int hours) {
 
-        Intent intent = new Intent(this, UtilizationListActivity.class);
+        Intent intent = new Intent(this, UtilizationCreateActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
 
