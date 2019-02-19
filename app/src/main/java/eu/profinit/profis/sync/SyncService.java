@@ -71,6 +71,7 @@ public class SyncService extends IntentService {
         PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setAutoCancel(true)
                 .setSmallIcon(R.mipmap.ic_launcher_foreground)
                 .setContentTitle(getString(R.string.utilization_notification_title))
                 .setContentText(getString(R.string.utilization_notification_message, hours))
