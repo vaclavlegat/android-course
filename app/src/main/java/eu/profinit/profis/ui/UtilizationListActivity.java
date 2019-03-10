@@ -42,8 +42,15 @@ public class UtilizationListActivity extends AppCompatActivity {
         Intent syncService = new Intent(this, SyncService.class);
         startService(syncService);
 
+        boolean isMultiPane = findViewById(R.id.detail_placeholder) != null;
+
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.list_placeholder, UtilizationListFragment.newInstance()).commit();
+
+            if (isMultiPane) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.detail_placeholder, UtilizationDetailFragment.newInstance(1)).commit();
+            }
+
         }
 
 

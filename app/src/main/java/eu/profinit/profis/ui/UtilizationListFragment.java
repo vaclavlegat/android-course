@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +20,7 @@ import eu.profinit.profis.model.UtilizationItem;
 public class UtilizationListFragment extends Fragment {
 
     private RecyclerView utilizationItems;
+    boolean isMutliPane;
 
     public UtilizationListFragment() {
         // Required empty public constructor
@@ -36,6 +38,9 @@ public class UtilizationListFragment extends Fragment {
 
 
         View view = inflater.inflate(R.layout.fragment_utilization_list, container, false);
+
+        View detailsFrame = getActivity().findViewById(R.id.detail_placeholder);
+        isMutliPane = detailsFrame != null && detailsFrame.getVisibility() == View.VISIBLE;
 
         utilizationItems = view.findViewById(R.id.utilization_items);
         utilizationItems.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -58,7 +63,15 @@ public class UtilizationListFragment extends Fragment {
     }
 
     private void openDetail(UtilizationItem item) {
-        UtilizationDetailActivity.start(getContext(), item.getId());
+        if (isMutliPane) {
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.detail_placeholder, UtilizationDetailFragment.newInstance(item.getId()))
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                    .commit();
+        } else {
+            UtilizationDetailActivity.start(getContext(), item.getId());
+        }
+
     }
 
     private List<UtilizationItem> loadItems() {
