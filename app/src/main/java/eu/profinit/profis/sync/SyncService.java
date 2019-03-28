@@ -32,10 +32,11 @@ public class SyncService extends IntentService {
     protected void onHandleIntent(@Nullable Intent intent) {
 
         boolean hasToday = false;
+        int hours = 0;
         List<UtilizationItem> items = ProfisDatabase.getInstance(this).utilizationDao().getAll();
         for (UtilizationItem item : items) {
             if (DateUtils.isToday(item.getDate().getTime()) && item.getHours() < 8) {
-                createNotification(8 - item.getHours());
+                hours += item.getHours();
                 hasToday = true;
             }
 
@@ -45,6 +46,8 @@ public class SyncService extends IntentService {
 
         if (!hasToday) {
             createNotification(8);
+        } else {
+            createNotification(8 - hours);
         }
 
         Intent broadcastIntent = new Intent();
