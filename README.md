@@ -1,2 +1,2 @@
 # android-course
-Profinit Android course
+Android course
